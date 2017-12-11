@@ -35,5 +35,15 @@ deleteUser= (userId, callback) => {
     User.remove({ "_id": ObjectId(userId) }, callback)
 }
 
+updatePassword = (userId,oldPassword,newPassword, sucessCallBack) => {
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(newPassword, salt, function (err, hash) {
+			newPassword = hash;
+			User.update({ "_id": ObjectId(userId),"password":oldPassword }, {"password":newPassword}, { upsert: false }, sucessCallBack);			
+		});
+	});
 
-module.exports = { createUser, getUserByUsername, comparePassword, getUserById,editProfile,deleteUser}
+ 
+}
+
+module.exports = { createUser, getUserByUsername, comparePassword, getUserById,editProfile,deleteUser,updatePassword}

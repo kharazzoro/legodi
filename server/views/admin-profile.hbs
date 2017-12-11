@@ -1,5 +1,5 @@
 <form method="post">
- 
+
     <div class="form-group row has-success">
 
         <label for="example-text-input text-success " class="col-12 col-form-label">
@@ -12,7 +12,7 @@
                 <h3 class="text-primary">Full Name:</h3>
             </label>
 
-            <input name="fullName" class="form-control" type="text"  id="example-text-input" value={{this.data.userDetails.fullName}}>
+            <input name="fullName" class="form-control" type="text" id="example-text-input" value={{this.data.userDetails.fullName}}>
         </div>
 
 
@@ -29,7 +29,7 @@
             <label for="example-text-input text-success " class="col-12 col-form-label mb-2">
                 <h3 class="text-primary">Profile image:</h3>
             </label>
-            
+
             <input name="imageFile" type="text" value={{this.data.userDetails.imageFile}}>
         </div>
 
@@ -68,14 +68,16 @@
             <label for="example-text-input text-success " class="col-12 col-form-label">
                 <h3 class="text-primary">What is your Current Job?</h3>
             </label>
+
             <input name="currentJob" class="form-control" type="text" id="example-text-input" value={{this.data.userDetails.currentJob}}>
+
         </div>
 
-       
+
 
         </td>
 
-  
+
 
 
     </div>
@@ -85,37 +87,65 @@
 </form>
 
 
-   <form method="post" action="/admin/profile/user/delete">
-  <label for="example-text-input text-success " class="col-12 col-form-label mt-4">
-            <h3 class="text-info">Account Setting:</h3>
-        </label>
+<form method="post" action="/admin/profile/user/delete">
+    <label for="example-text-input text-success " class="col-12 col-form-label mt-4">
+        <h3 class="text-info">Account Setting:</h3>
+    </label>
 
-        <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
-            <button type="button" class="btn btn-primary">Change your Password</button>
+    <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
 
-            <button type="button" class="btn btn-info active" id="delete-users">Delete your account</button>
+        <button type="button" class="btn btn-info active" id="delete-users">Delete your account</button>
 
-        </div>
-        <div>
-            <div id="validation-user">
+    </div>
+    <div>
+        <div id="validation-user">
             <h2 class="text-white">{{this.data.username}}</h2>
             <h3>Are you sure you want to delete Your Account:</h3>
             <h5>Write your password:</h5>
-            <input type="text" name="password" placeholder="name of category" />
+            <input type="password" name="password" placeholder="name of category" />
             <button class="btn btn-danger btn-lg active ">delete</button>
-          </div>
         </div>
- 
-      
-      </form>
+    </div>
+
+
+</form>
+
+<form method="post" action="/admin/profile/user/update/password">
+    <label for="example-text-input text-success " class="col-12 col-form-label mt-4">
+    </label>
+
+    <div class="col-lg-6 col-md-8 col-sm-9 col-xs-9 ">
+        <button id="update-password" type="button" class="btn btn-primary">Change your Password</button>
+
+
+    </div>
+    <div>
+        <div id="validation-password">
+
+            <input type="password" name="oldpassword" placeholder="old passowrd" />
+            <input type="password" name="newpassword" placeholder="new passowrd" />
+            <input type="password" name="confirmpassword" placeholder="confirm passowrd" />
+            <button class="btn btn-danger btn-lg active ">Change Password</button>
+
+        </div>
+    </div>
+
+
+</form>
 
 <script>
 
-   const deleteButton= document.getElementById('delete-users')
-   const validationBox = document.getElementById("validation-user")
+    const deleteButton = document.getElementById('delete-users')
+    const validationBox = document.getElementById("validation-user")
+    const updatePassword = document.getElementById('update-password');
+    const validationPassword = document.getElementById("validation-password")
 
- deleteButton.addEventListener("click", () => {
-              validationBox.style.display = "flex";
-        })
-    </script>
+    updatePassword.addEventListener("click", () => {
+        validationPassword.style.display = "flex";
 
+    })
+    deleteButton.addEventListener("click", () => {
+        validationBox.style.display = "flex";
+    })
+
+</script>
