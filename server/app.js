@@ -17,6 +17,7 @@ const index = require('./routes/index');
 const adminArticles = require('./routes/admin/articles/articles');
 const adminCategories = require('./routes/admin/categories/categories');
 const autentication = require('./routes/admin/authentication/login');
+const adminProfile = require('./routes/admin/profile/profile');
 
 const app = express();
 app.use(cors());
@@ -79,7 +80,8 @@ app.use('/', index);
 app.use('/admin/articles',ensureAuthenticated, adminArticles);
 app.use('/admin/categories',ensureAuthenticated, adminCategories);
 app.use('/api', router);
-app.use('/users', autentication)
+app.use('/users', autentication);
+app.use('/admin/profile',adminProfile);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

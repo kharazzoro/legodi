@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs');
+const ObjectId = require('mongodb').ObjectID;
 
 createUser = (newUser, callback) => {
 	bcrypt.genSalt(10, (err, salt) => {
@@ -26,4 +27,13 @@ comparePassword = function (candidatePassword, hash, callback) {
 	});
 }
 
-module.exports = { createUser, getUserByUsername, comparePassword, getUserById }
+editProfile = (userId, query, upsertOption, sucessCallBack) => {
+    User.update({ "_id": ObjectId(userId) }, query, { upsert: upsertOption }, sucessCallBack);
+};
+
+deleteUser= (userId, callback) => {
+    User.remove({ "_id": ObjectId(userId) }, callback)
+}
+
+
+module.exports = { createUser, getUserByUsername, comparePassword, getUserById,editProfile,deleteUser}

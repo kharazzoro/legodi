@@ -77,7 +77,6 @@ router.post('/delete/:articleId', (req, res) => {
 router.post('/edit/:articleId', function (req, res, next) {
     const { articleId } = req.params;
     const query = req.body;
-    console.log(query)
     const callback = (error, article) => {
         res.redirect('/')
     }

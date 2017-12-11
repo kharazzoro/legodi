@@ -21,7 +21,17 @@ const schema = new Schema({
 		type: Boolean,
 		default: false,
 
+	},
+	userDetails:{
+		fullName:String,
+		address:String,
+		imageFile:String,
+		graduated:Boolean,
+		uniCollege:String,
+		currentJob:String
+		
 	}
+
 });
 
 const User = mongoose.model('users', schema);
